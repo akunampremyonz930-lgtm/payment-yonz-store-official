@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Metode Pembayaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a0000; /* Darker red/black background */
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 10px;
+            margin-bottom: 15px;
+            background-color: #330000; /* Slightly lighter dark red for options */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .payment-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .payment-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            border-radius: 5px;
+            background-color: white; /* Placeholder for logo background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.7em;
+            color: black;
+            padding: 5px;
+        }
+
+        .payment-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-details strong {
+            font-size: 1em;
+            margin-bottom: 3px;
+        }
+
+        .payment-details span {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .copy-button {
+            background-color: #ff3366; /* Bright red/pink button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover:not(:disabled) {
+            background-color: #e6004c;
+        }
+
+        .not-available .copy-button {
+             background-color: #555;
+             cursor: not-allowed;
+        }
+
+        /* Specific logo styles - using background colors/text as a placeholder for real logos */
+        .dana-icon { background-color: #1A70B6; color: white; font-size: 1em;}
+        .gopay-icon { background-color: #00AA90; color: white; font-size: 1em;}
+        .ovo-icon { background-color: #4C2F92; color: white; font-size: 1em;}
+
+        .not-available span {
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pilih Metode Payment</h1>
+
+        <div class="payment-option">
+            <div class="payment-info">
+                <div class="payment-icon dana-icon">DANA</div>
+                <div class="payment-details">
+                    <strong>DANA</strong>
+                    <span>6285361384443</span>
+                </div>
+            </div>
+            <button class="copy-button" onclick="copyNumber('6285361384443')">Salin Nomor</button>
+        </div>
+
+        <div class="payment-option">
+            <div class="payment-info">
+                <div class="payment-icon gopay-icon">GOPAY</div>
+                <div class="payment-details">
+                    <strong>GOPAY</strong>
+                    <span>085361384443</span>
+                </div>
+            </div>
+            <button class="copy-button" onclick="copyNumber('085361384443')">Salin Nomor</button>
+        </div>
+
+        <div class="payment-option not-available">
+            <div class="payment-info">
+                <div class="payment-icon ovo-icon">OVO</div>
+                <div class="payment-details">
+                    <strong>OVO</strong>
+                    <span>BELUM TERSEDIA</span>
+                </div>
+            </div>
+            <button class="copy-button" disabled>Salin Nomor</button>
+        </div>
+
+        </div>
+
+    <script>
+        function copyNumber(number) {
+            // Function to copy text to clipboard
+            navigator.clipboard.writeText(number).then(() => {
+                alert('Nomor ' + number + ' berhasil disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+                alert('Gagal menyalin nomor. Silakan salin manual: ' + number);
+            });
+        }
+    </script>
+</body>
+</html>
